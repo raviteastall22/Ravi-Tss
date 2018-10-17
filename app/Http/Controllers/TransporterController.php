@@ -1,10 +1,10 @@
 <?php
-
+//Ravi Mishra
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use DB;
-use App\Transporter;
+use App\Transporter; 
 class TransporterController extends Controller {
     public function getCountryList(){   
         $countries = DB::table('countries')->pluck('country_name','_id'); 
