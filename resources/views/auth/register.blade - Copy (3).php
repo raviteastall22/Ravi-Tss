@@ -550,7 +550,23 @@
 var loader_modal = document.getElementById('loader_modal'); 
     $("form#singal_owner_form").submit(function(){
         loader_modal.style.display = "block";
-        $("#owner_submit").attr("disabled", true); 
+        $("#owner_submit").attr("disabled", true);
+        // var email = $("#username").val();
+        // var value = 'Email must be business email';
+        // var reg = /^([\w-\.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!yahoo.co.in)(?!aol.com)(?!abc.com)(?!xyz.com)(?!pqr.com)(?!rediffmail.com)(?!live.com)(?!outlook.com)(?!me.com)(?!msn.com)(?!ymail.com)([\w-]+\.)+[\w-]{2,4})?$/;
+        // if (reg.test(email)==false ){
+        //     loader_modal.style.display = "none";
+        //     $("#username").parent().addClass('form-has-error');
+        //     $("#msg_username").parent().show();
+        //     $("#msg_username").text(value);
+        //     setTimeout(function(){ 
+        //         $("#owner_submit").attr("disabled", false);
+        //         $("#username").parent().removeClass('form-has-error');
+        //         $("#msg_username").parent().hide();
+        //         $("#msg_username").text('');
+        //     }, 3000);
+        //     return false;
+        // } 
         var formData = new FormData($(this)[0]);
         $.ajax({
             url : "{{ route('single_owner') }}",
@@ -563,17 +579,20 @@ var loader_modal = document.getElementById('loader_modal');
                 console.log(data);
                 var res =$.parseJSON(data);
                 if(res.status ==1){
+                    //$('#popup-5').show();
                     var modal = document.getElementById('owner_modal');
                     modal.style.display = "block";
                 } else {
                     alert('Something wrong! please try again ');
+                    //$('#popup-5').show();
                 }
             }, error: function(data){
                 loader_modal.style.display = "none";
                 $("#owner_submit").attr("disabled", false);
                 var rr = $.parseJSON(data.responseText) ;
-                console.log(rr.errors); 
+                console.log(rr.errors); //status responseJSON 422
                 $.each(rr.errors, function(key, value){
+                    //alert(key + '--'+value) ;
                     $("#"+key).parent().addClass('form-has-error');
                     $("#msg_"+key).parent().show();
                     $("#msg_"+key).text(value);
@@ -593,6 +612,26 @@ var loader_modal = document.getElementById('loader_modal');
     function check_phone(key){
         var phone = $("#owner_mobile").val();
         $("#username").val(phone);
+        // var digit = $("#"+key).val().toString()[0];
+        // var value = $("#"+key).val();
+        // if(digit!= 5 || value.length > 9){
+        //     $("#"+key).parent().addClass('form-has-error');
+        //     $("#msg_"+key).parent().show();
+        //     $("#msg_"+key).text('Phone numbers start with 5 and length should be 9');
+        //     $("#"+key).val('') ;
+        //     setTimeout(function(){ 
+        //         $("#"+key).parent().removeClass('form-has-error');
+        //         $("#msg_"+key).parent().hide();
+        //         $("#msg_"+key).text('');
+        //     }, 3000);
+        //     return false ;
+        // } else {
+        //     setTimeout(function(){ 
+        //         $("#"+key).parent().removeClass('form-has-error');
+        //         $("#msg_"+key).parent().hide();
+        //         $("#msg_"+key).text('');
+        //     }, 3000);
+        // }
     } 
 </script>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -605,6 +644,7 @@ var loader_modal = document.getElementById('loader_modal');
                     type: "GET",
                     data: {countryId : countryId,countryName:countryName},
                     success:function(countrycodeVal) {
+                        //alert(countrycodeVal);
                         $('#owner_mobile').val(countrycodeVal);
                         $('#mobile').val(countrycodeVal);
                         return false;
@@ -743,9 +783,40 @@ var loader_modal = document.getElementById('loader_modal');
             event.preventDefault();
             loader_modal.style.display = "block";
             $("#transport_submit").attr("disabled", true);
+            // var email = $("#email").val();
+            // var reg = /^([\w-\.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!yahoo.co.in)(?!aol.com)(?!abc.com)(?!xyz.com)(?!pqr.com)(?!rediffmail.com)(?!live.com)(?!outlook.com)(?!me.com)(?!msn.com)(?!ymail.com)([\w-]+\.)+[\w-]{2,4})?$/;
+            // if (reg.test(email)==false ){
+            //     loader_modal.style.display = "none";
+            //     $("#email").parent().addClass('form-has-error');
+            //     $("#msg_email").parent().show();
+            //     $("#msg_email").text('Email must be business email');
+            //     setTimeout(function(){ 
+            //         $("#transport_submit").attr("disabled", false);
+            //         $("#email").parent().removeClass('form-has-error');
+            //         $("#msg_email").parent().hide();
+            //         $("#msg_email").text('');
+            //     }, 3000);
+            //     return false;
+            // }
+            // var transport_username = $("#transport_username").val();
+            // if (reg.test(transport_username)==false ){
+            //     loader_modal.style.display = "none";
+            //     $("#transport_username").parent().addClass('form-has-error');
+            //     $("#msg_transport_username").parent().show();
+            //     $("#msg_transport_username").text('Username must be business email');
+            //     setTimeout(function(){ 
+            //         $("#transport_submit").attr("disabled", false);
+            //         $("#transport_username").parent().removeClass('form-has-error');
+            //         $("#msg_transport_username").parent().hide();
+            //         $("#msg_transport_username").text('');
+            //     }, 3000);
+            //     return false;
+            // }
+            var formData = new FormData($(this)[0]);
             $.ajax({
                 url : "{{ route('register') }}",
                 type : "POST",
+                //data : formData,
                 data:  new FormData(this),
                 //async  : false,
                 success : function(data){
