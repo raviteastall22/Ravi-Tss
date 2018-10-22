@@ -1,44 +1,40 @@
 @include('layouts.header')
     <style>
         .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 9999; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    max-height:100%;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-/* The Close Button */
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    margin-top: -20px;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 9999; /* Sit on top */
+            padding-top: 100px; /* Location of the box */ 
+            left: 0;
+            top: 0; 
+            max-height:100%; 
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: -20px;
+        }
+        .close:hover,.close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
     <!--<div class="page-loader p-hidden" id="page-loader">
 		<div>
@@ -62,7 +58,7 @@
                 <div class="col s12">
                     <ul class="tabs">
                         <li class="tab col s3"><a class="active" href="#test1">Register As Transporter</a></li>
-                        <li class="tab col s3"><a href="#test2">Register As Indivisual</a></li>
+                        <li class="tab col s3"><a href="#test2">Register As Individual</a></li>
                     </ul>
                 </div> 
                 <div class="col s12 m6 l12"  id="test1">
@@ -127,7 +123,7 @@
                                     </div>
                                     <div class="col s12 m12 l3">
                                         <div class="form-element form-input ">
-                                            <input id="mobile" class="form-element-field" placeholder="Please fill in your mobile number" type="mobile" name="mobile" onkeyup="check_phone(this.id);" />
+                                            <input id="mobile" class="form-element-field" placeholder="Please fill in your mobile number" type="mobile" name="mobile" />
                                             <div class="form-element-bar"></div>
                                             <label class="form-element-label" for="mobile">Mobile Number</label>
                                             <small class="form-element-hint" role="alert" style="dispaly:none;">
@@ -275,21 +271,24 @@
                                                 <strong id="msg_transport_username"></strong>
                                             </small>
                                         </div>
-                                    </div>
+                                    </div> 
                                     <div class="col s12 m12 l3">
                                         <div class="form-element form-input ">
                                             <input id="transport_password" class="form-element-field" placeholder="Please fill in your password" type="password" name="transport_password" />
                                             <div class="form-element-bar"></div>
-                                            <label class="form-element-label" for="transport_password">Password</label>
+                                            <a onclick="show_password('transport_password')" style="float: right;position: absolute;right: 0;top: 0px;cursor: pointer;" class="material-icons dp48">remove_red_eye</a>
+                                            <label class="form-element-label" for="transport_password">
+                                            Password </label> 
                                             <small class="form-element-hint" role="alert" style="dispaly:none;">
                                                 <strong id="msg_transport_password"></strong>
                                             </small>
-                                        </div>
+                                        </div> 
                                     </div>
                                     <div class="col s12 m12 l3">
                                         <div class="form-element form-input ">
                                             <input id="confirm_transport_password" class="form-element-field" placeholder="Please fill in your password" type="password" name="confirm_transport_password" />
                                             <div class="form-element-bar"></div>
+                                            <a onclick="show_password('confirm_transport_password')" style="float: right;position: absolute;right: 0;top: 0px;cursor: pointer;" class="material-icons dp48">remove_red_eye</a>
                                             <label class="form-element-label" for="confirm_transport_password">Confirm Password</label>
                                             <small class="form-element-hint" role="alert" style="dispaly:none;">
                                                 <strong id="msg_confirm_transport_password"></strong>
@@ -406,7 +405,7 @@
                                     </div>
                                     <div class="col s12 m12 l3">
                                         <div class="form-element form-input ">
-                                            <input id="owner_mobile" class="form-element-field" placeholder="Please fill in your mobile number" type="mobile" name="owner_mobile" onkeyup="check_phone(this.id);" />
+                                            <input id="owner_mobile" class="form-element-field" placeholder="Please fill in your mobile number" type="" name="owner_mobile" onkeyup="check_phone(this.id);" />
                                             <div class="form-element-bar"></div>
                                             <label class="form-element-label" for="owner_mobile">Mobile Number</label>
                                             <small class="form-element-hint" role="alert" style="display:none;">
@@ -447,7 +446,7 @@
                                 <div class="row">
                                     <div class="col s12 m12 l3">
                                         <div class="form-element form-input ">
-                                            <input id="username" class="form-element-field" placeholder="Only official email id and default username" type="input" name="username" />
+                                            <input id="username" class="form-element-field" placeholder="Only Mobile will be default username" type="input" name="username" readonly />
                                             <div class="form-element-bar"></div>
                                             <label class="form-element-label" for="username">Username</label>
                                             <small class="form-element-hint" role="alert" style="display:none;">
@@ -458,7 +457,9 @@
                                     <div class="col s12 m12 l3">
                                         <div class="form-element form-input ">
                                             <input id="owner_password" class="form-element-field" placeholder="Please fill in your password" type="password" name="owner_password" />
+                                            <span toggle="#owner_password" class="fa fa-fw field-icon toggle-password fa-eye"></span>
                                             <div class="form-element-bar"></div>
+                                            <a onclick="show_password('owner_password')" style="float: right;position: absolute;right: 0;top: 0px;cursor: pointer;" class="material-icons dp48">remove_red_eye</a>
                                             <label class="form-element-label" for="owner_password"> Password</label>
                                             <small class="form-element-hint" role="alert" style="display:none;">
                                                 <strong id="msg_owner_password"></strong>
@@ -469,6 +470,7 @@
                                         <div class="form-element form-input ">
                                             <input id="owner_confirm_password" class="form-element-field" placeholder="Please fill in your password" type="password" name="owner_confirm_password" />
                                             <div class="form-element-bar"></div>
+                                            <a onclick="show_password('owner_confirm_password')" style="float:right;position:absolute;right:0;top:0px;cursor:pointer;" class="material-icons dp48">remove_red_eye</a>
                                             <label class="form-element-label" for="owner_confirm_password">Confirm Password</label>
                                             <small class="form-element-hint" role="alert" style="display:none;">
                                                 <strong id="msg_owner_confirm_password"></strong>
@@ -549,22 +551,22 @@ var loader_modal = document.getElementById('loader_modal');
     $("form#singal_owner_form").submit(function(){
         loader_modal.style.display = "block";
         $("#owner_submit").attr("disabled", true);
-        var email = $("#username").val();
-        var value = 'Email must be business email';
-        var reg = /^([\w-\.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!yahoo.co.in)(?!aol.com)(?!abc.com)(?!xyz.com)(?!pqr.com)(?!rediffmail.com)(?!live.com)(?!outlook.com)(?!me.com)(?!msn.com)(?!ymail.com)([\w-]+\.)+[\w-]{2,4})?$/;
-        if (reg.test(email)==false ){
-            loader_modal.style.display = "none";
-            $("#username").parent().addClass('form-has-error');
-            $("#msg_username").parent().show();
-            $("#msg_username").text(value);
-            setTimeout(function(){ 
-                $("#owner_submit").attr("disabled", false);
-                $("#username").parent().removeClass('form-has-error');
-                $("#msg_username").parent().hide();
-                $("#msg_username").text('');
-            }, 3000);
-            return false;
-        } 
+        // var email = $("#username").val();
+        // var value = 'Email must be business email';
+        // var reg = /^([\w-\.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!yahoo.co.in)(?!aol.com)(?!abc.com)(?!xyz.com)(?!pqr.com)(?!rediffmail.com)(?!live.com)(?!outlook.com)(?!me.com)(?!msn.com)(?!ymail.com)([\w-]+\.)+[\w-]{2,4})?$/;
+        // if (reg.test(email)==false ){
+        //     loader_modal.style.display = "none";
+        //     $("#username").parent().addClass('form-has-error');
+        //     $("#msg_username").parent().show();
+        //     $("#msg_username").text(value);
+        //     setTimeout(function(){ 
+        //         $("#owner_submit").attr("disabled", false);
+        //         $("#username").parent().removeClass('form-has-error');
+        //         $("#msg_username").parent().hide();
+        //         $("#msg_username").text('');
+        //     }, 3000);
+        //     return false;
+        // } 
         var formData = new FormData($(this)[0]);
         $.ajax({
             url : "{{ route('single_owner') }}",
@@ -608,6 +610,8 @@ var loader_modal = document.getElementById('loader_modal');
         return false ;
     }) ;
     function check_phone(key){
+        var phone = $("#owner_mobile").val();
+        $("#username").val(phone);
         // var digit = $("#"+key).val().toString()[0];
         // var value = $("#"+key).val();
         // if(digit!= 5 || value.length > 9){
@@ -775,45 +779,46 @@ var loader_modal = document.getElementById('loader_modal');
                 } 
             });
         } 
-        $("form#transporter_form").submit(function(){
-           
+        $("form#transporter_form").submit(function(event){
+            event.preventDefault();
             loader_modal.style.display = "block";
             $("#transport_submit").attr("disabled", true);
-            var email = $("#email").val();
-            var reg = /^([\w-\.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!yahoo.co.in)(?!aol.com)(?!abc.com)(?!xyz.com)(?!pqr.com)(?!rediffmail.com)(?!live.com)(?!outlook.com)(?!me.com)(?!msn.com)(?!ymail.com)([\w-]+\.)+[\w-]{2,4})?$/;
-            if (reg.test(email)==false ){
-                loader_modal.style.display = "none";
-                $("#email").parent().addClass('form-has-error');
-                $("#msg_email").parent().show();
-                $("#msg_email").text('Email must be business email');
-                setTimeout(function(){ 
-                    $("#transport_submit").attr("disabled", false);
-                    $("#email").parent().removeClass('form-has-error');
-                    $("#msg_email").parent().hide();
-                    $("#msg_email").text('');
-                }, 3000);
-                return false;
-            }
-            var transport_username = $("#transport_username").val();
-            if (reg.test(transport_username)==false ){
-                loader_modal.style.display = "none";
-                $("#transport_username").parent().addClass('form-has-error');
-                $("#msg_transport_username").parent().show();
-                $("#msg_transport_username").text('Username must be business email');
-                setTimeout(function(){ 
-                    $("#transport_submit").attr("disabled", false);
-                    $("#transport_username").parent().removeClass('form-has-error');
-                    $("#msg_transport_username").parent().hide();
-                    $("#msg_transport_username").text('');
-                }, 3000);
-                return false;
-            }
+            // var email = $("#email").val();
+            // var reg = /^([\w-\.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!yahoo.co.in)(?!aol.com)(?!abc.com)(?!xyz.com)(?!pqr.com)(?!rediffmail.com)(?!live.com)(?!outlook.com)(?!me.com)(?!msn.com)(?!ymail.com)([\w-]+\.)+[\w-]{2,4})?$/;
+            // if (reg.test(email)==false ){
+            //     loader_modal.style.display = "none";
+            //     $("#email").parent().addClass('form-has-error');
+            //     $("#msg_email").parent().show();
+            //     $("#msg_email").text('Email must be business email');
+            //     setTimeout(function(){ 
+            //         $("#transport_submit").attr("disabled", false);
+            //         $("#email").parent().removeClass('form-has-error');
+            //         $("#msg_email").parent().hide();
+            //         $("#msg_email").text('');
+            //     }, 3000);
+            //     return false;
+            // }
+            // var transport_username = $("#transport_username").val();
+            // if (reg.test(transport_username)==false ){
+            //     loader_modal.style.display = "none";
+            //     $("#transport_username").parent().addClass('form-has-error');
+            //     $("#msg_transport_username").parent().show();
+            //     $("#msg_transport_username").text('Username must be business email');
+            //     setTimeout(function(){ 
+            //         $("#transport_submit").attr("disabled", false);
+            //         $("#transport_username").parent().removeClass('form-has-error');
+            //         $("#msg_transport_username").parent().hide();
+            //         $("#msg_transport_username").text('');
+            //     }, 3000);
+            //     return false;
+            // }
             var formData = new FormData($(this)[0]);
             $.ajax({
                 url : "{{ route('register') }}",
                 type : "POST",
-                data : formData,
-                async  : false,
+                //data : formData,
+                data:  new FormData(this),
+                //async  : false,
                 success : function(data){
                     console.log(data);
                     loader_modal.style.display = "none";
@@ -860,14 +865,25 @@ var loader_modal = document.getElementById('loader_modal');
         var span1 = document.getElementsByClassName("close")[1];
         span.onclick = function() {
             modal.style.display = "none";
+            window.location.href="";
         }
         span1.onclick = function() {
             modal1.style.display = "none";
+            window.location.href="/";
         }
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
                 modal1.style.display = "none";
+                window.location.href="/";
+            }
+        } 
+        function show_password(id) {
+            var x = document.getElementById(id);
+            if (x.type === "password") {
+                x.type = "input";
+            } else {
+                x.type = "password";
             }
         }
 </script>
